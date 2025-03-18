@@ -51,9 +51,13 @@ namespace INVZAV.lib.Forms
 			вставкаToolStripMenuItem = new ToolStripMenuItem();
 			inclipAndOutclipToolStripMenuItem = new ToolStripMenuItem();
 			inclipToolStripMenuItem1 = new ToolStripMenuItem();
+			добавитьПробелToolStripMenuItem = new ToolStripMenuItem();
+			addSpaceBeforeToolStripMenuItem = new ToolStripMenuItem();
+			addSpaceAfterToolStripMenuItem = new ToolStripMenuItem();
 			внешнийВидToolStripMenuItem = new ToolStripMenuItem();
 			backGroundColorToolStripMenuItem = new ToolStripMenuItem();
 			chooseBackGroundColorToolStripMenuItem = new ToolStripMenuItem();
+			прозрачностьToolStripMenuItem = new ToolStripMenuItem();
 			colorDialog1 = new ColorDialog();
 			statusStrip1 = new StatusStrip();
 			toolStripStatusLabel1 = new ToolStripStatusLabel();
@@ -97,6 +101,7 @@ namespace INVZAV.lib.Forms
 			outputBox.Size = new Size(327, 72);
 			outputBox.TabIndex = 3;
 			outputBox.Text = "";
+			outputBox.TextChanged += outputBox_TextChanged;
 			outputBox.MouseDoubleClick += outputBox_MouseDoubleClick;
 			// 
 			// tableLayoutPanel2
@@ -133,10 +138,10 @@ namespace INVZAV.lib.Forms
 			// convert
 			// 
 			convert.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-			convert.BackColor = Color.LavenderBlush;
+			convert.BackColor = Color.Indigo;
 			convert.Dock = DockStyle.Fill;
 			convert.FlatStyle = FlatStyle.Popup;
-			convert.ForeColor = Color.Black;
+			convert.ForeColor = Color.Transparent;
 			convert.Location = new Point(3, 39);
 			convert.Name = "convert";
 			convert.Size = new Size(320, 31);
@@ -201,10 +206,10 @@ namespace INVZAV.lib.Forms
 			// 
 			// button1
 			// 
-			button1.BackColor = Color.FromArgb(64, 0, 64);
+			button1.BackColor = Color.FromArgb(255, 192, 255);
 			button1.Dock = DockStyle.Fill;
 			button1.FlatStyle = FlatStyle.Popup;
-			button1.ForeColor = Color.Transparent;
+			button1.ForeColor = Color.Black;
 			button1.Location = new Point(3, 3);
 			button1.Name = "button1";
 			button1.Size = new Size(155, 30);
@@ -215,7 +220,7 @@ namespace INVZAV.lib.Forms
 			// 
 			// copySelectedButton
 			// 
-			copySelectedButton.BackColor = Color.FromArgb(222, 184, 228);
+			copySelectedButton.BackColor = Color.Pink;
 			copySelectedButton.Dock = DockStyle.Fill;
 			copySelectedButton.FlatStyle = FlatStyle.Popup;
 			copySelectedButton.ForeColor = Color.Black;
@@ -230,7 +235,7 @@ namespace INVZAV.lib.Forms
 			// menuStrip1
 			// 
 			menuStrip1.BackColor = Color.FromArgb(250, 218, 235);
-			menuStrip1.Items.AddRange(new ToolStripItem[] { программаToolStripMenuItem, вставкаToolStripMenuItem, внешнийВидToolStripMenuItem });
+			menuStrip1.Items.AddRange(new ToolStripItem[] { программаToolStripMenuItem, вставкаToolStripMenuItem, добавитьПробелToolStripMenuItem, внешнийВидToolStripMenuItem });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
 			menuStrip1.Size = new Size(665, 24);
@@ -284,10 +289,31 @@ namespace INVZAV.lib.Forms
 			inclipToolStripMenuItem1.Text = "вставить";
 			inclipToolStripMenuItem1.Click += inclipToolStripMenuItem1_Click;
 			// 
+			// добавитьПробелToolStripMenuItem
+			// 
+			добавитьПробелToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addSpaceBeforeToolStripMenuItem, addSpaceAfterToolStripMenuItem });
+			добавитьПробелToolStripMenuItem.Name = "добавитьПробелToolStripMenuItem";
+			добавитьПробелToolStripMenuItem.Size = new Size(113, 20);
+			добавитьПробелToolStripMenuItem.Text = "добавить пробел";
+			// 
+			// addSpaceBeforeToolStripMenuItem
+			// 
+			addSpaceBeforeToolStripMenuItem.Name = "addSpaceBeforeToolStripMenuItem";
+			addSpaceBeforeToolStripMenuItem.Size = new Size(119, 22);
+			addSpaceBeforeToolStripMenuItem.Text = "вначале";
+			addSpaceBeforeToolStripMenuItem.Click += addSpaceBeforeToolStripMenuItem_Click;
+			// 
+			// addSpaceAfterToolStripMenuItem
+			// 
+			addSpaceAfterToolStripMenuItem.Name = "addSpaceAfterToolStripMenuItem";
+			addSpaceAfterToolStripMenuItem.Size = new Size(119, 22);
+			addSpaceAfterToolStripMenuItem.Text = "вконце";
+			addSpaceAfterToolStripMenuItem.Click += addSpaceAfterToolStripMenuItem_Click;
+			// 
 			// внешнийВидToolStripMenuItem
 			// 
 			внешнийВидToolStripMenuItem.BackColor = Color.Transparent;
-			внешнийВидToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { backGroundColorToolStripMenuItem });
+			внешнийВидToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { backGroundColorToolStripMenuItem, прозрачностьToolStripMenuItem });
 			внешнийВидToolStripMenuItem.Enabled = false;
 			внешнийВидToolStripMenuItem.Name = "внешнийВидToolStripMenuItem";
 			внешнийВидToolStripMenuItem.Size = new Size(92, 20);
@@ -298,7 +324,7 @@ namespace INVZAV.lib.Forms
 			// 
 			backGroundColorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chooseBackGroundColorToolStripMenuItem });
 			backGroundColorToolStripMenuItem.Name = "backGroundColorToolStripMenuItem";
-			backGroundColorToolStripMenuItem.Size = new Size(130, 22);
+			backGroundColorToolStripMenuItem.Size = new Size(151, 22);
 			backGroundColorToolStripMenuItem.Text = "цвет фона";
 			// 
 			// chooseBackGroundColorToolStripMenuItem
@@ -307,6 +333,12 @@ namespace INVZAV.lib.Forms
 			chooseBackGroundColorToolStripMenuItem.Size = new Size(158, 22);
 			chooseBackGroundColorToolStripMenuItem.Text = "выбрать свой...";
 			chooseBackGroundColorToolStripMenuItem.Click += ChooseBackgroundColorToolStripMenuItem_Click;
+			// 
+			// прозрачностьToolStripMenuItem
+			// 
+			прозрачностьToolStripMenuItem.Name = "прозрачностьToolStripMenuItem";
+			прозрачностьToolStripMenuItem.Size = new Size(151, 22);
+			прозрачностьToolStripMenuItem.Text = "прозрачность";
 			// 
 			// statusStrip1
 			// 
@@ -341,6 +373,7 @@ namespace INVZAV.lib.Forms
 			StartPosition = FormStartPosition.CenterScreen;
 			Text = "преобразователь клеток с номерами в текст инв. зав.";
 			TopMost = true;
+			FormClosing += MainForm_FormClosing;
 			FormClosed += MainForm_FormClosed;
 			Shown += MainForm_Shown;
 			tableLayoutPanel1.ResumeLayout(false);
@@ -383,5 +416,9 @@ namespace INVZAV.lib.Forms
 		private Button copySelectedButton;
 		private TableLayoutPanel tableLayoutPanel4;
 		private Button button1;
+		private ToolStripMenuItem прозрачностьToolStripMenuItem;
+		private ToolStripMenuItem добавитьПробелToolStripMenuItem;
+		private ToolStripMenuItem addSpaceBeforeToolStripMenuItem;
+		private ToolStripMenuItem addSpaceAfterToolStripMenuItem;
 	}
 }

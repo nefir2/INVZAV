@@ -22,5 +22,29 @@ namespace INVZAV.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool spaceBefore {
+            get {
+                return ((bool)(this["spaceBefore"]));
+            }
+            set {
+                this["spaceBefore"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool spaceAfter {
+            get {
+                return ((bool)(this["spaceAfter"]));
+            }
+            set {
+                this["spaceAfter"] = value;
+            }
+        }
     }
 }
