@@ -13,23 +13,28 @@ namespace INVZAV.lib.Forms
 		private Dictionary<string, string> settings = [];
 		private const string spaceBeforeSettingName = "spaceBefore";
 		private const string spaceAfterSettingName = "spaceAfter";
+		private const string topMostSettingName = "topMost";
 		public MainForm()
 		{
 			InitializeComponent();
-			TopMostToolStripMenuItem.Checked = true;
 			this.TopMost = true;
 			if (File.Exists(settingsFileName))
 			{
 				settings = Json.ReadFile<Dictionary<string, string>>(Path.Combine(".", settingsFileName));
 				if (settings.TryGetValue(spaceBeforeSettingName, out string? value) && value.ToLower().Equals("true")) addSpaceBeforeToolStripMenuItem.Checked = true;
+				else addSpaceBeforeToolStripMenuItem.Checked = false;
 				if (settings.TryGetValue(spaceAfterSettingName, out value) && value.ToLower().Equals("true")) addSpaceAfterToolStripMenuItem.Checked = true;
+				else addSpaceAfterToolStripMenuItem.Checked = false;
+				if (settings.TryGetValue(topMostSettingName, out value) && value.ToLower().Equals("true")) this.TopMost = true;
+				else this.TopMost = false;
 			}
+			TopMostToolStripMenuItem.Checked = this.TopMost;
 		}
 
 		private void TopMostToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			this.TopMost = !this.TopMost;
 			TopMostToolStripMenuItem.Checked = !TopMostToolStripMenuItem.Checked;
+			this.TopMost = TopMostToolStripMenuItem.Checked;
 		}
 		private void ChooseBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -90,7 +95,8 @@ namespace INVZAV.lib.Forms
 			settings = new Dictionary<string, string> 
 			{
 				{ spaceBeforeSettingName, addSpaceBeforeToolStripMenuItem.Checked.ToString() },
-				{ spaceAfterSettingName, addSpaceAfterToolStripMenuItem.Checked.ToString() }
+				{ spaceAfterSettingName, addSpaceAfterToolStripMenuItem.Checked.ToString() },
+				{ topMostSettingName, this.TopMost.ToString() }
 			};
 			Json.RewriteFile(Path.Combine(".", settingsFileName), settings);
 		}
