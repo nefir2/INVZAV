@@ -291,6 +291,8 @@ namespace INVZAV.lib.Forms
 			// 
 			// добавитьПробелToolStripMenuItem
 			// 
+			добавитьПробелToolStripMenuItem.Checked = true;
+			добавитьПробелToolStripMenuItem.CheckState = CheckState.Checked;
 			добавитьПробелToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addSpaceBeforeToolStripMenuItem, addSpaceAfterToolStripMenuItem });
 			добавитьПробелToolStripMenuItem.Name = "добавитьПробелToolStripMenuItem";
 			добавитьПробелToolStripMenuItem.Size = new Size(113, 20);
@@ -299,14 +301,14 @@ namespace INVZAV.lib.Forms
 			// addSpaceBeforeToolStripMenuItem
 			// 
 			addSpaceBeforeToolStripMenuItem.Name = "addSpaceBeforeToolStripMenuItem";
-			addSpaceBeforeToolStripMenuItem.Size = new Size(119, 22);
+			addSpaceBeforeToolStripMenuItem.Size = new Size(180, 22);
 			addSpaceBeforeToolStripMenuItem.Text = "вначале";
 			addSpaceBeforeToolStripMenuItem.Click += addSpaceBeforeToolStripMenuItem_Click;
 			// 
 			// addSpaceAfterToolStripMenuItem
 			// 
 			addSpaceAfterToolStripMenuItem.Name = "addSpaceAfterToolStripMenuItem";
-			addSpaceAfterToolStripMenuItem.Size = new Size(119, 22);
+			addSpaceAfterToolStripMenuItem.Size = new Size(180, 22);
 			addSpaceAfterToolStripMenuItem.Text = "вконце";
 			addSpaceAfterToolStripMenuItem.Click += addSpaceAfterToolStripMenuItem_Click;
 			// 
