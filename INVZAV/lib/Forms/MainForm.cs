@@ -43,12 +43,12 @@ namespace INVZAV.lib.Forms
 				this.BackColor = colorDialog1.Color;
 			}
 		}
-		private void InputBox_TextChanged(object sender, EventArgs e) => outputBox.Text = CellsConverter.AutoINVZAV(inputBox.Text);
+		private void InputBox_TextChanged(object sender, EventArgs e) => outputBox.Text = CellsConverter.AutoINVZAVWithoutTypeFetching(inputBox.Text);
 		private void inclipToolStripMenuItem1_Click(object sender, EventArgs e) => inputBox.Text = Clipboard.GetText();
 		private void inclipAndOutclipToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			inputBox.Text = Clipboard.GetText();
-			outputBox.Text = CellsConverter.AutoINVZAV(inputBox.Text);
+			outputBox.Text = CellsConverter.AutoINVZAVWithoutTypeFetching(inputBox.Text);
 			outputBox_TextChanged(sender, e);
 			Clipboard.SetText(outputBox.Text);
 		}

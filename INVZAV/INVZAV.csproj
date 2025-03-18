@@ -11,6 +11,10 @@
     <SignAssembly>False</SignAssembly>
     <PackageId>INVZAV</PackageId>
     <ApplicationIcon>159287_pink.ico</ApplicationIcon>
+    <Authors>nefir2</Authors>
+    <Company>gh_nefir2</Company>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <Title>invzav</Title>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
